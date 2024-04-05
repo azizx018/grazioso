@@ -125,7 +125,6 @@ public class Driver {
         }
         //Gather dog information from user
         System.out.println("Enter the dog breed");
-        
         String breed = scanner.nextLine();
         System.out.println("Enter the dog gender");
         String gender = scanner.nextLine();
@@ -158,21 +157,9 @@ public class Driver {
         // Add the code to instantiate a new dog and add it to the appropriate list
         Dog dog = new Dog(name, breed, gender, age, weight, acquisitionDate, acquisitionCountry, trainingStatus, reserved, inServiceCountry);
         
-        //set all attributes of the dog
-        // dog.setName(name);
-        // dog.setBreed(breed);
-        // dog.setGender(gender);
-        // dog.setAge(age);
-        // dog.setWeight(weight);
-        // dog.setAcquisitionDate(acquisitionDate);
-        // dog.setAcquisitionLocation(acquisitionCountry);
-        // dog.setTrainingStatus(trainingStatus);
-        // dog.setReserved(reserved);
-        // dog.setInServiceCountry(inServiceCountry);
         
        //add the new dog to the dogList
         dogList.add(dog);
-        
         scanner.close();
     }
 
