@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Driver {
     private static ArrayList<Dog> dogList = new ArrayList<Dog>();
+    //created a new arrayList for monkeys
+    private static ArrayList<Monkey> monkeyList = new ArrayList<Monkey>();
     // Instance variables (if needed)
     int i = 0;
     static int userChoice = 0;
@@ -105,6 +107,12 @@ public class Driver {
     // Adds monkeys to a list for testing
     //Optional for testing
     public static void initializeMonkeyList() {
+        //test monkeys
+        Monkey monkey1 = new Monkey("Alan", "Male", "12", "14", "05-12-2019", "United States", "intake", false, "United States", "Tamarin", 10, 22, 35);
+        
+        //add test monkeys to the monkeyList
+        monkeyList.add(monkey1);
+        
 
     }
 
