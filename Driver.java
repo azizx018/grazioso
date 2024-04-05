@@ -166,6 +166,7 @@ public class Driver {
         
        //add the new dog to the dogList
         dogList.add(dog);
+        System.out.println("The dog has been added to the system.");
         scanner.close();
     }
 
@@ -238,6 +239,7 @@ public class Driver {
         
             //add the new monkey to the monkeyList
             monkeyList.add(monkey);
+            System.out.println("The money has been added to the system.");
             monkeyScanner.close();
 
         }
