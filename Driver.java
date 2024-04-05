@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,8 +8,8 @@ public class Driver {
     private static ArrayList<Dog> dogList = new ArrayList<Dog>();
     //created a new arrayList for monkeys
     private static ArrayList<Monkey> monkeyList = new ArrayList<Monkey>();
+
     // Instance variables (if needed)
-    int i = 0;
     static int userChoice = 0;
 
     public static void main(String[] args) {
@@ -18,14 +17,11 @@ public class Driver {
         Scanner scanner = new Scanner(System.in);
         Scanner monkeyScanner = new Scanner(System.in);
     	
-
-
         initializeDogList();
         initializeMonkeyList();
 
         // Add a loop that displays the menu, accepts the users input
         // and takes the appropriate action.
-        
         
         displayMenu();
         while (scnr.hasNext()) {
@@ -33,7 +29,7 @@ public class Driver {
             	//integer choice
             	userChoice = scnr.nextInt();
             	
-            	//switch statement for choice
+            	//switch statement for user choice
             	switch (userChoice) {
             		case 1:
             			intakeNewDog(scanner);
@@ -160,11 +156,10 @@ public class Driver {
         } else {
             reserved = false;
         }
+    
         System.out.println("Enter the dog inServiceCountry");
         String inServiceCountry = scanner.nextLine();
         
-       
-
         // Add the code to instantiate a new dog and add it to the appropriate list
         Dog dog = new Dog(name, breed, gender, age, weight, acquisitionDate, acquisitionCountry, trainingStatus, reserved, inServiceCountry);
         
@@ -217,7 +212,7 @@ public class Driver {
             String inServiceCountry = monkeyScanner.nextLine();
 
             //validate the species
-            //these are th only approved species of monkey
+            //these are the only approved species of monkey
             String[] monkeySpecies = {"guenon", "macaque", "marmoset", "capuchin", "squirrel monkey", "tamarin"};
             List<String> mokeySpeciesList = Arrays.asList(monkeySpecies);
             System.out.println("Enter the monkey species");
@@ -225,7 +220,7 @@ public class Driver {
             if (mokeySpeciesList.contains(species.toLowerCase())){
                 System.out.println("This species is approved!!");
             } else {
-                System.out.println("This species is not approved");
+                System.out.println("This species is not approved!");
                 displayMenu();
                 return; //return to menu
             }
@@ -244,8 +239,6 @@ public class Driver {
             //add the new monkey to the monkeyList
             monkeyList.add(monkey);
             monkeyScanner.close();
-
-
 
         }
 
