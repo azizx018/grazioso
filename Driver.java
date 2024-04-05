@@ -1,4 +1,7 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -13,6 +16,7 @@ public class Driver {
     public static void main(String[] args) {
     	Scanner scnr = new Scanner(System.in);
         Scanner scanner = new Scanner(System.in);
+        Scanner monkeyScanner = new Scanner(System.in);
     	
 
 
@@ -35,7 +39,7 @@ public class Driver {
             			intakeNewDog(scanner);
             			break;
             		case 2:
-            			System.out.println("intake new monkey");
+            			intakeNewMonkey(monkeyScanner);
             			break;
             		case 3:
             			System.out.println("reserve animal");
@@ -109,7 +113,7 @@ public class Driver {
     public static void initializeMonkeyList() {
         //test monkeys
         Monkey monkey1 = new Monkey("Alan", "Male", "12", "14", "05-12-2019", "United States", "intake", false, "United States", "Tamarin", 10, 22, 35);
-        
+
         //add test monkeys to the monkeyList
         monkeyList.add(monkey1);
         
@@ -120,14 +124,13 @@ public class Driver {
     // Complete the intakeNewDog method
     // The input validation to check that the dog is not already in the list
     // is done for you
-   
     public static void intakeNewDog(Scanner scanner) {
-        
         System.out.println("What is the dog's name?");
         String name = scanner.nextLine();
          for(Dog dog: dogList) {
             if(dog.getName().equalsIgnoreCase(name)) {
                 System.out.println("\n\nThis dog is already in our system\n\n");
+                displayMenu();
                 return; //returns to menu
             }
         }
@@ -176,8 +179,74 @@ public class Driver {
 	//Instantiate and add the new monkey to the appropriate list
         // For the project submission you must also  validate the input
 	// to make sure the monkey doesn't already exist and the species type is allowed
-        public static void intakeNewMonkey(Scanner scanner) {
-            System.out.println("The method intakeNewMonkey needs to be implemented");
+        public static void intakeNewMonkey(Scanner monkeyScanner) {
+            System.out.println("What is the monkey's name?");
+            String name = monkeyScanner.nextLine();
+            for (Monkey monkey : monkeyList){
+                if (monkey.getName().equalsIgnoreCase(name)){
+                    System.out.println("\n\nThis monkey is already in our system\n\n");
+                    displayMenu();
+                    return; //returns to menu
+                }
+            }
+            //Gather the rest of the information from the user
+            System.out.println("Enter the monkey gender");
+            String gender = monkeyScanner.nextLine();
+            System.out.println("Enter the monkey age");
+            String age = monkeyScanner.nextLine();
+            System.out.println("Enter the monkey weight");
+            String weight = monkeyScanner.nextLine();
+            System.out.println("Enter the monkey acquisitionDate");
+            String acquisitionDate = monkeyScanner.nextLine();
+            System.out.println("Enter the monkey acquisitionCountry");
+            String acquisitionCountry = monkeyScanner.nextLine();
+            System.out.println("Enter the monkey trainingStatus");
+            String trainingStatus = monkeyScanner.nextLine();
+
+            //Get the boolean value 
+            System.out.println("Is the monkey reserved? Enter true or false.");
+            String userInput = monkeyScanner.nextLine();
+        
+            Boolean reserved = false;
+            if (userInput.equalsIgnoreCase("true")){
+                reserved = true;
+                } else {
+                reserved = false;
+         }
+            System.out.println("Enter the monkey inServiceCountry");
+            String inServiceCountry = monkeyScanner.nextLine();
+
+            //validate the species
+            //these are th only approved species of monkey
+            String[] monkeySpecies = {"guenon", "macaque", "marmoset", "capuchin", "squirrel monkey", "tamarin"};
+            List<String> mokeySpeciesList = Arrays.asList(monkeySpecies);
+            System.out.println("Enter the monkey species");
+            String species = monkeyScanner.nextLine();
+            if (mokeySpeciesList.contains(species.toLowerCase())){
+                System.out.println("This species is approved!!");
+            } else {
+                System.out.println("This species is not approved");
+                displayMenu();
+                return; //return to menu
+            }
+            
+            System.out.println("Enter monkey tail length");
+            int tailLength = monkeyScanner.nextInt();
+            System.out.println("Enter monkey height");
+            int height = monkeyScanner.nextInt();
+            System.out.println("Enter monkey body length");
+            int bodyLength = monkeyScanner.nextInt();
+
+            // Add the code to instantiate a new monkey and add it to the appropriate list
+            Monkey monkey = new Monkey(name, gender, age, weight, acquisitionDate, acquisitionCountry, trainingStatus, reserved, 
+                                        inServiceCountry, species, tailLength, height, bodyLength);
+        
+            //add the new monkey to the monkeyList
+            monkeyList.add(monkey);
+            monkeyScanner.close();
+
+
+
         }
 
         // Complete reserveAnimal
