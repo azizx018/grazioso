@@ -1,11 +1,17 @@
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Driver {
     private static ArrayList<Dog> dogList = new ArrayList<Dog>();
     // Instance variables (if needed)
+    int i = 0;
+    static int userChoice = 0;
 
     public static void main(String[] args) {
+    	Scanner scnr = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+    	
 
 
         initializeDogList();
@@ -13,6 +19,53 @@ public class Driver {
 
         // Add a loop that displays the menu, accepts the users input
         // and takes the appropriate action.
+        
+        
+        displayMenu();
+        while (scnr.hasNext()) {
+        	if (scnr.hasNextInt()) {
+            	//integer choice
+            	userChoice = scnr.nextInt();
+            	
+            	//switch statement for choice
+            	switch (userChoice) {
+            		case 1:
+            			intakeNewDog(scanner);
+            			break;
+            		case 2:
+            			System.out.println("intake new monkey");
+            			break;
+            		case 3:
+            			System.out.println("reserve animal");
+            			break;
+            		case 4:
+            			System.out.println("print list of dog");
+            			break;
+            		case 5:
+            			System.out.println("print list of monkey");
+            			break;
+            		case 6:
+            			System.out.println("print list of all non reserved animals");
+            			break;
+            		default:
+            			System.out.println("Invalid entry");
+            			displayMenu();
+            			break;
+            	}
+            				
+            } else {
+            	String userChoice = scnr.nextLine();
+            	if (Objects.equals(userChoice, "q")) {
+            		System.out.println("exit");
+            	} else {
+            		System.out.println("You have entered an invalid option. Choose again");
+            		displayMenu();
+            		
+            	}
+            }
+        }
+
+       
 	// For the project submission you must also include input validation
         // and appropriate feedback to the user.
         // Hint: create a Scanner and pass it to the necessary
@@ -59,17 +112,68 @@ public class Driver {
     // Complete the intakeNewDog method
     // The input validation to check that the dog is not already in the list
     // is done for you
+   
     public static void intakeNewDog(Scanner scanner) {
+        
         System.out.println("What is the dog's name?");
         String name = scanner.nextLine();
-        for(Dog dog: dogList) {
+         for(Dog dog: dogList) {
             if(dog.getName().equalsIgnoreCase(name)) {
                 System.out.println("\n\nThis dog is already in our system\n\n");
                 return; //returns to menu
             }
         }
+        //Gather dog information from user
+        System.out.println("Enter the dog breed");
+        
+        String breed = scanner.nextLine();
+        System.out.println("Enter the dog gender");
+        String gender = scanner.nextLine();
+        System.out.println("Enter the dog age");
+        String age = scanner.nextLine();
+        System.out.println("Enter the dog weight");
+        String weight = scanner.nextLine();
+        System.out.println("Enter the dog acquisitionDate");
+        String acquisitionDate = scanner.nextLine();
+        System.out.println("Enter the dog acquisitionCountry");
+        String acquisitionCountry = scanner.nextLine();
+        System.out.println("Enter the dog trainingStatus");
+        String trainingStatus = scanner.nextLine();
+
+        //getting the boolean value
+        System.out.println("Is the dog reserved? Enter true or false.");
+        String userInput = scanner.nextLine();
+        
+        Boolean reserved = false;
+        if (userInput.equalsIgnoreCase("true")){
+            reserved = true;
+        } else {
+            reserved = false;
+        }
+        System.out.println("Enter the dog inServiceCountry");
+        String inServiceCountry = scanner.nextLine();
+        
+       
 
         // Add the code to instantiate a new dog and add it to the appropriate list
+        Dog dog = new Dog(name, breed, gender, age, weight, acquisitionDate, acquisitionCountry, trainingStatus, reserved, inServiceCountry);
+        
+        //set all attributes of the dog
+        // dog.setName(name);
+        // dog.setBreed(breed);
+        // dog.setGender(gender);
+        // dog.setAge(age);
+        // dog.setWeight(weight);
+        // dog.setAcquisitionDate(acquisitionDate);
+        // dog.setAcquisitionLocation(acquisitionCountry);
+        // dog.setTrainingStatus(trainingStatus);
+        // dog.setReserved(reserved);
+        // dog.setInServiceCountry(inServiceCountry);
+        
+       //add the new dog to the dogList
+        dogList.add(dog);
+        
+        scanner.close();
     }
 
 
