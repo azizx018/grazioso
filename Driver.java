@@ -16,6 +16,7 @@ public class Driver {
     	Scanner scnr = new Scanner(System.in);
         Scanner scanner = new Scanner(System.in);
         Scanner monkeyScanner = new Scanner(System.in);
+        Scanner reserveScanner = new Scanner(System.in);
     	
         initializeDogList();
         initializeMonkeyList();
@@ -38,7 +39,7 @@ public class Driver {
             			intakeNewMonkey(monkeyScanner);
             			break;
             		case 3:
-            			System.out.println("reserve animal");
+            			reserveAnimal(reserveScanner);
             			break;
             		case 4:
             			System.out.println("print list of dog");
@@ -246,7 +247,23 @@ public class Driver {
 
         // Complete reserveAnimal
         // You will need to find the animal by animal type and in service country
-        public static void reserveAnimal(Scanner scanner) {
+        public static void reserveAnimal(Scanner reserveScanner) {
+            System.out.println("Please enter animal type.");
+            String animalType = reserveScanner.nextLine();
+            System.out.println("Please enter the country you wouldl ike to reserve the animal for.");
+            String inServiceCountry = reserveScanner.nextLine();
+
+            if (animalType.toLowerCase().equals("dog")){
+                System.out.println("you have picked dog!");
+            } else if (animalType.toLowerCase().equals("monkey")){
+                System.out.println("you have picked moneky");
+            } else{
+                System.out.println("We only accpet types dog and monkey currently");
+                displayMenu();
+                return; //returns user to the main menu
+            }
+
+
             System.out.println("The method reserveAnimal needs to be implemented");
 
         }
