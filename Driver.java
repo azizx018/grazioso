@@ -3,6 +3,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Driver {
     private static ArrayList<Dog> dogList = new ArrayList<Dog>();
@@ -98,10 +100,12 @@ public class Driver {
         Dog dog1 = new Dog("Spot", "German Shepherd", "male", "1", "25.6", "05-12-2019", "United States", "intake", false, "United States");
         Dog dog2 = new Dog("Rex", "Great Dane", "male", "3", "35.2", "02-03-2020", "United States", "Phase I", false, "United States");
         Dog dog3 = new Dog("Bella", "Chihuahua", "female", "4", "25.6", "12-12-2019", "Canada", "in service", true, "Canada");
+        Dog dog4 = new Dog("Carl", "Dashound", "female", "4", "25.6", "12-12-2019", "Canada", "in service", false, "Canada");
 
         dogList.add(dog1);
         dogList.add(dog2);
         dogList.add(dog3);
+        dogList.add(dog4);
     }
 
 
@@ -254,17 +258,30 @@ public class Driver {
             String inServiceCountry = reserveScanner.nextLine();
 
             if (animalType.toLowerCase().equals("dog")){
-                System.out.println("you have picked dog!");
+
+                //this check assumes that you can't set reserved to true if it is already true
+                //or you can't reserve an aminal that is already reserved
+                List<Dog> result = dogList.stream().filter(dog -> 
+                        dog.getInServiceLocation().equalsIgnoreCase(inServiceCountry)
+                        && !dog.getReserved()
+                    ).collect(Collectors.toList());
+                if (result.isEmpty()){
+                    System.out.println("There is not an availble dog in this country.");
+                    displayMenu();
+                    return; //returns to the main menu
+                } else {
+                    //this sets the 1st item in the list that statisfys input criteria to reserved
+                    result.get(0).setReserved(true);
+                    System.out.println("You have reserved the dog " + result.get(0).getName());
+                }
+                
             } else if (animalType.toLowerCase().equals("monkey")){
-                System.out.println("you have picked moneky");
+                System.out.println("you have picked monkey");
             } else{
                 System.out.println("We only accpet types dog and monkey currently");
                 displayMenu();
                 return; //returns user to the main menu
             }
-
-
-            System.out.println("The method reserveAnimal needs to be implemented");
 
         }
 
