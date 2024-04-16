@@ -44,13 +44,13 @@ public class Driver {
                         reserveAnimal(reserveScanner);
                         break;
                     case 4:
-                        System.out.println("print list of dog");
+                        printAnimals("dogs");
                         break;
                     case 5:
-                        System.out.println("print list of monkey");
+                        printAnimals("monkeys");
                         break;
                     case 6:
-                        System.out.println("print list of all non reserved animals");
+                        printAnimals("available");
                         break;
                     default:
                         System.out.println("Invalid entry");
@@ -117,9 +117,9 @@ public class Driver {
         // test monkeys
         Monkey monkey1 = new Monkey("Alan", "Male", "12", "14", "05-12-2019", "United States", "intake", false,
                 "United States", "Tamarin", 10, 22, 35);
-        Monkey monkey2 = new Monkey("Simon", "Male", "12", "14", "05-12-2019", "United States", "intake", true,
+        Monkey monkey2 = new Monkey("Simon", "Male", "12", "14", "05-12-2019", "United States", "in service", true,
                 "United States", "Tamarin", 10, 22, 35);  
-        Monkey monkey3 = new Monkey("Betty", "Female", "12", "14", "05-12-2019", "France", "intake", true,
+        Monkey monkey3 = new Monkey("Betty", "Female", "12", "14", "05-12-2019", "France", "in service", true,
                 "France", "Tamarin", 10, 22, 35);               
 
         // add test monkeys to the monkeyList
@@ -331,8 +331,58 @@ public class Driver {
     // The other lists can have a print statement saying "This option needs to be
     // implemented".
     // To score "exemplary" you must correctly implement the "available" list.
-    public static void printAnimals() {
-        System.out.println("The method printAnimals needs to be implemented");
+    
 
+    public static void printAnimals(String operation) {
+        operation = operation.toLowerCase().trim();
+        switch(operation)
+        {
+            case "dogs":
+                
+                for (Dog dog : dogList) {
+                    System.out.println(dog);
+                }
+            
+                break;
+            case "monkeys":
+                for (Monkey monkey : monkeyList) {
+                    System.out.println(monkey);
+                }
+                
+                break;
+            case "available":
+            //grabs available monkeys from the monkey list
+                List<Monkey> monkeyNotReservedList = monkeyList.stream()
+                    .filter(monkey -> !monkey.getReserved())
+                    .collect(Collectors.toList());
+
+               //grabs available dogs from the dog list
+               List<Dog> dogNotReservedList = dogList.stream()
+               .filter(dog -> !dog.getReserved())
+               .collect(Collectors.toList());    
+
+                //if list is empty tells user and returns to main menu
+                if (monkeyNotReservedList.isEmpty() && dogNotReservedList.isEmpty()) {
+                    System.out.println("There are not available animals at this time.");
+                    displayMenu();
+                    return; //takes user to main menu
+                } else{
+                    //prints the available monkeys
+                    System.out.println("Monkeys that are available: ");  
+                    for (Monkey monkey : monkeyNotReservedList) {
+                        System.out.println(monkey);
+
+                    }  
+                    //print the available dogs
+                    System.out.println("Dogs that are available: ");
+                    for (Dog dog : dogNotReservedList) {
+                        System.out.println(dog); 
+                    }
+                     
+                }
+                break;
+            default: 
+                System.out.println("Operation not supported: " + operation);
+        }
     }
 }

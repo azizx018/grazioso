@@ -21,7 +21,6 @@ public class RescueAnimal {
     public RescueAnimal() {
     }
 
-
 	public String getName() {
 		return name;
 	}
