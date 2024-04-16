@@ -117,9 +117,15 @@ public class Driver {
         // test monkeys
         Monkey monkey1 = new Monkey("Alan", "Male", "12", "14", "05-12-2019", "United States", "intake", false,
                 "United States", "Tamarin", 10, 22, 35);
+        Monkey monkey2 = new Monkey("Simon", "Male", "12", "14", "05-12-2019", "United States", "intake", true,
+                "United States", "Tamarin", 10, 22, 35);  
+        Monkey monkey3 = new Monkey("Betty", "Female", "12", "14", "05-12-2019", "France", "intake", true,
+                "France", "Tamarin", 10, 22, 35);               
 
         // add test monkeys to the monkeyList
         monkeyList.add(monkey1);
+        monkeyList.add(monkey2);
+        monkeyList.add(monkey3);
 
     }
 
@@ -281,7 +287,6 @@ public class Driver {
 
             //if they user input is monkey
         } else if (animalType.toLowerCase().equals("monkey")) {
-            System.out.println("you have picked monkey");
 
             // this check assumes that you can't set reserved to true if it is already true
             // or you can't reserve an aminal that is already reserved
