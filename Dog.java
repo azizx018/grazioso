@@ -20,19 +20,17 @@ public class Dog extends RescueAnimal {
         setInServiceCountry(inServiceCountry);
 
     }
-    
 
-   
 
 //causes the output to print in a better format
     @Override
     public String toString() {
-        return "Dog [ breed: " + breed + ", Name: " + getName() + ", Animal Type: " + getAnimalType()
+        return "Dog  breed: " + breed + ", Name: " + getName() + ", Animal Type: " + getAnimalType()
                 + ", Breed: " + getBreed() + ", Gender: " + getGender() + ", Age: " + getAge()
                 + ", Weight: " + getWeight() + ", Acquisition Date: " + getAcquisitionDate()
                 + ", Acquisition Location: " + getAcquisitionLocation() + ", Reserved: " + getReserved()
                 + ", In Service Location: " + getInServiceLocation() + ", Training Status: "  + getTrainingStatus()
-                + "] ";
+                + " ";
     }
 
 

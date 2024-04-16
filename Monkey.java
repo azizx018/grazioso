@@ -33,12 +33,12 @@ public class Monkey extends RescueAnimal {
 //makes the output more readable
 	@Override
 	public String toString() {
-		return "Monkey [ species: " + species + ", tailLength: " + tailLength + ", height: " + height + ", bodyLength: "
+		return "Monkey  species: " + species + ", tailLength: " + tailLength + ", height: " + height + ", bodyLength: "
 				+ bodyLength + ", Name: " + getName() + ", Animal Type: " + getAnimalType() + ", Gender: "
 				+ getGender() + ", Age: " + getAge() + ", Weight: " + getWeight() + ", Acquisitio Date: "
 				+ getAcquisitionDate() + ", Acquisition Location: " + getAcquisitionLocation() + ", Reserved: "
 				+ getReserved() + ", In Service Location: " + getInServiceLocation() + ", Training Status: "
-				+ getTrainingStatus() + "]";
+				+ getTrainingStatus() + " ";
 	}
 
 

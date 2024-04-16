@@ -98,7 +98,7 @@ public class Driver {
     public static void initializeDogList() {
         Dog dog1 = new Dog("Spot", "German Shepherd", "male", "1", "25.6", "05-12-2019", "United States", "intake",
                 false, "United States");
-        Dog dog2 = new Dog("Rex", "Great Dane", "male", "3", "35.2", "02-03-2020", "United States", "Phase I", false,
+        Dog dog2 = new Dog("Rex", "Great Dane", "male", "3", "35.2", "02-03-2020", "United States", "Phase I", true,
                 "United States");
         Dog dog3 = new Dog("Bella", "Chihuahua", "female", "4", "25.6", "12-12-2019", "Canada", "in service", true,
                 "Canada");
@@ -119,7 +119,7 @@ public class Driver {
                 "United States", "Tamarin", 10, 22, 35);
         Monkey monkey2 = new Monkey("Simon", "Male", "12", "14", "05-12-2019", "United States", "in service", true,
                 "United States", "Tamarin", 10, 22, 35);  
-        Monkey monkey3 = new Monkey("Betty", "Female", "12", "14", "05-12-2019", "France", "in service", true,
+        Monkey monkey3 = new Monkey("Betty", "Female", "12", "14", "05-12-2019", "France", "in service", false,
                 "France", "Tamarin", 10, 22, 35);               
 
         // add test monkeys to the monkeyList
@@ -341,12 +341,14 @@ public class Driver {
                 
                 for (Dog dog : dogList) {
                     System.out.println(dog);
+                    System.out.println();
                 }
             
                 break;
             case "monkeys":
                 for (Monkey monkey : monkeyList) {
                     System.out.println(monkey);
+                    System.out.println();
                 }
                 
                 break;
@@ -363,21 +365,27 @@ public class Driver {
 
                 //if list is empty tells user and returns to main menu
                 if (monkeyNotReservedList.isEmpty() && dogNotReservedList.isEmpty()) {
-                    System.out.println("There are not available animals at this time.");
+                    System.out.println("There are no available animals at this time.");
                     displayMenu();
                     return; //takes user to main menu
                 } else{
                     //prints the available monkeys
                     System.out.println("Monkeys that are available: ");  
+                    System.out.println();
                     for (Monkey monkey : monkeyNotReservedList) {
                         System.out.println(monkey);
-
+                        System.out.println();
                     }  
+                    System.out.println();
+                    
                     //print the available dogs
                     System.out.println("Dogs that are available: ");
+                    System.out.println();
                     for (Dog dog : dogNotReservedList) {
                         System.out.println(dog); 
+                        System.out.println();
                     }
+                    System.out.println();
                      
                 }
                 break;
